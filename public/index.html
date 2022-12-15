@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Галлерея</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+
+    <link href="css/lightbox.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/index.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js" defer></script>
+
+    <script type="text/javascript" src="js/prototype.js"></script>
+    <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
+    <script type="text/javascript" src="js/lightbox.js"></script>
+</head>
+<body class="d-flex justify-content-md-center align-items-center vh-100">  
+    <div class="container text-nowrap shadow-lg bg-body rounded-4 p-5 w-75 mh-75" style="min-width:420px; min-height:650px; border-style: outset; border-width: 5px; ">
+
+        <div class="border-bottom border-2 mb-4">
+            <h1>Галлерея</h1>
+        </div>
+
+        <div class="row">
+            <div class="mh-600 bc-0 text-nowrap shadow-non rounded-2 p-3 col col-lg-2 h-50 w-25" id="albums">
+                <button type="button" onclick="" class="btn btn-color btn-block">
+                    <b>Вся галлерея</b>
+                </button>
+            </div>
+
+            <div class="mh-600 bc-1 text-nowrap shadow-non rounded-2 p-3 col">
+                <div class="row" id="gallary">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function GetAlbums() {
+            const response = await fetch("/api/albums", {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+ 
+            if (response.ok === true) {
+
+                const albums = await response.json();
+                let rows = document.getElementById("albums"); 
+
+                rows.innerHTML="";
+                rows.innerHTML += "<button type=\"button\" onclick=\"GetGallary()\" class=\"btn btn-color btn-block\">"+
+                    "<b>Вся галлерея</b></button>";
+
+                albums.forEach(album => {
+                    rows.innerHTML += "<button type=\"button\" onclick=\"GetAlbum(\'"+album.id+"\')\" class=\"btn btn-color btn-block\">"+
+                    "<b>"+album.name+"</b></button>";
+                });
+            }
+        }
+        async function GetGallary() {
+            const response = await fetch("/api/gallary", {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+ 
+            if (response.ok === true) {
+
+                const gallary = await response.json();
+                let allImgs = document.getElementById("gallary"); 
+                
+                allImgs.innerHTML = "";
+                gallary.forEach(img => {
+                    allImgs.innerHTML += "<a class=\"col p-1\" href=\"images/gallary/"+img.src+"\" rel=\"lightbox\" title=\"Картинка"+img.src+"\"><img src=\"images/gallary/"+img.src+"\" width=\"160\" height=\"120\"></a>";
+                });
+            }
+        }
+        async function GetAlbum(id) {
+            const response = await fetch("/api/albums/" + id, {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+            if (response.ok === true) {
+                const imgs = await response.json();
+                let allImgs = document.getElementById("gallary"); 
+                
+                allImgs.innerHTML = "";
+                imgs.forEach(img => {
+                    allImgs.innerHTML += "<a class=\"col p-1\" href=\"images/gallary/"+img.src+"\" rel=\"lightbox\" title=\"Картинка"+img.src+"\"><img src=\"images/gallary/"+img.src+"\" width=\"160\" height=\"120\"></a>";
+                });
+            }
+        }
+
+        GetAlbums();
+    </script>
+</body>
+</html>

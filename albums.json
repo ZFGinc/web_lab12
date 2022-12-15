@@ -1,0 +1,17 @@
+[
+    {
+        "id":0,
+        "albumName":"grass",
+        "name":"Трава"
+    },
+    {
+        "id":1,
+        "albumName":"tree",
+        "name":"Деревья"
+    },
+    {
+        "id":2,
+        "albumName":"fire",
+        "name":"Костер"
+    }
+]
