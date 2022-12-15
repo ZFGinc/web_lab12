@@ -365,7 +365,7 @@ body {
 <p align = "center">
   <img src = "img/scr_2.png">
   <br>
-  <img src = "img/scr_3png">
+  <img src = "img/scr_3.png">
   <br>
   <img src = "img/scr_4.png">
   <br>
