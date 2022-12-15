@@ -256,14 +256,10 @@ app.listen(80);
 
         <div class="row">
             <div class="mh-600 bc-0 text-nowrap shadow-non rounded-2 p-3 col col-lg-2 h-50 w-25" id="albums">
-                <button type="button" onclick="" class="btn btn-color btn-block">
-                    <b>Вся галлерея</b>
-                </button>
             </div>
 
             <div class="mh-600 bc-1 text-nowrap shadow-non rounded-2 p-3 col">
                 <div class="row" id="gallary">
-                    
                 </div>
             </div>
         </div>
@@ -283,7 +279,7 @@ app.listen(80);
 
                 rows.innerHTML="";
                 rows.innerHTML += "<button type=\"button\" onclick=\"GetGallary()\" class=\"btn btn-color btn-block\">"+
-                    "<b>Вся галлерея</b></button>";
+                    "<b>Все картинки</b></button>";
 
                 albums.forEach(album => {
                     rows.innerHTML += "<button type=\"button\" onclick=\"GetAlbum(\'"+album.id+"\')\" class=\"btn btn-color btn-block\">"+
