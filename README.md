@@ -229,7 +229,7 @@ app.listen(80);
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Галлерея</title>
+    <title>Галерея</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -251,7 +251,7 @@ app.listen(80);
     <div class="container text-nowrap shadow-lg bg-body rounded-4 p-5 w-75 mh-75" style="min-width:420px; min-height:650px; border-style: outset; border-width: 5px; ">
 
         <div class="border-bottom border-2 mb-4">
-            <h1>Галлерея</h1>
+            <h1>Галерея</h1>
         </div>
 
         <div class="row">
