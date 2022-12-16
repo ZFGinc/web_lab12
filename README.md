@@ -326,7 +326,7 @@ app.listen(80);
 </html>
 ```
 
-### index.html
+### index.css
 ```css
 body {
     margin: 0;
